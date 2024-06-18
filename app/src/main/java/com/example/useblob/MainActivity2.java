@@ -2,6 +2,7 @@ package com.example.useblob;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +24,12 @@ import com.azure.storage.blob.BlobServiceClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
 import com.azure.storage.common.StorageSharedKeyCredential;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Base64;
+import java.util.Objects;
 
 
 public class MainActivity2 extends AppCompatActivity {
@@ -69,6 +75,11 @@ public class MainActivity2 extends AppCompatActivity {
             public void onActivityResult(ActivityResult o) {
                 if(o.getResultCode()==RESULT_OK) {
                     pdfUri = o.getData().getData();
+                    try {
+                        blobContainerClient.getBlobClient("historypdf").upload(BinaryData.fromStream(Objects.requireNonNull(getContentResolver().openInputStream(pdfUri))), true);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         });
