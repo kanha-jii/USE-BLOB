@@ -14,7 +14,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
+        multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -46,5 +46,27 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
     implementation("com.azure:azure-storage-blob:12.14.0")
+//    {
+//        exclude(group = "io.netty', module: 'netty-transport-native-epoll")
+//        exclude(group = "io.netty', module: 'netty-transport-native-kqueue")
+//    }
+//    implementation("com.microsoft.azure.android:azure-storage-android:2.0.0@aar")
+    implementation("androidx.multidex:multidex:2.0.1")
+
+//    implementation ("javax.xml.stream:stax-api:1.0-2")
+//    implementation ("com.fasterxml.woodstox:woodstox-core:6.2.4")
+//    implementation ("org.codehaus.woodstox:stax2-api:4.2.1")
+
+//    implementation ("org.slf4j:slf4j-api:1.7.30")
+//    implementation ("org.slf4j:slf4j-simple:1.7.30")
+
+//    implementation ("io.grpc:grpc-okhttp:1.7.0")
+//    implementation ("com.squareup.okhttp3:okhttp:3.0.1")
+
+    // Netty dependencies
+//    implementation ("io.netty:netty-all:4.1.65.Final")
+//    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.1")
+    implementation ("javax.xml.stream:stax-api:1.0")
 }
